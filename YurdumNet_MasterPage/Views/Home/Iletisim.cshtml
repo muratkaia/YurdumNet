@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Iletisim";
+}
+
+@section head{
+    <link href="/Content/css/Iletisim.css" rel="stylesheet" />
+    <style>
+        body {
+            background: url('../images/1.png') no-repeat 0px 0px;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+    </style>
+}
+
+<div class="container" style="margin-bottom:30px;margin-top:150px">
+    <br />
+    <h2 class="text-center">Bizimle iletisime gecin!</h2><br />
+    <div class="left-w3">
+
+        <form action="Ilet" method="post">
+            <div class="agile1">
+                <h3>Ad</h3>
+                <input type="text" name="name" class="name" placeholder="" required="">
+            </div>
+            <div class="agile1">
+                <h3>Soyad</h3>
+                <input type="text" name="soyad" class="company" placeholder="" required="">
+            </div>
+            <div class="agile1">
+                <h3>Telefon</h3>
+                <input type="text" name="telephone" class="telephone" placeholder="" required="">
+            </div>
+            <div class="agile1">
+                <h3>Email</h3>
+                <input type="text" name="email" class="email" placeholder="" required="">
+            </div>
+            <div class="agile1">
+                <h3>Mesaj</h3>
+                <textarea name="message" placeholder="" required=""></textarea>
+            </div>
+            <input style="border-radius:10px" type="submit" value="Mesaj Gönder">
+        </form>
+    </div>
+    <div class="right-w3ls">
+
+
+        <div class="agile1">
+            <h3>Bize Ulaşın</h3>
+            <div class="map">
+                <iframe src="https://maps.google.com/maps?q=bah%C3%A7e%C5%9Fehir%20%C3%BCniversitesi%20s%C3%BCrekli%20e%C4%9Fitim%20merkezi&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+            </div>
+        </div>
+        <h3 class="w3ls">İletisimde Kalin</h3>
+        <div class="agile1">
+            <h3>Sosyal İkonlar</h3>
+            <div class="socialicons w3">
+                <ul>
+                    <li><a class="facebook" href="#"></a></li>
+                    <li><a class="twitter" href="#"></a></li>
+                    <li><a class="google" href="#"></a></li>
+                    <li><a class="pinterest" href="#"></a></li>
+                    <li><a class="linkedin" href="#"></a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="clear"></div>
+</div>
+
+

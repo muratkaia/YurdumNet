@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@using YurdumNet_MasterPage.Models;
+@model List<Yurtlar>
+
+
+<div class="site-blocks-cover overlay" style="background-image: url(/Content/images/arkaplan1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+            <div class="col-md-12">
+
+                <div class="row justify-content-center mb-4">
+                    <div class="col-md-8 text-center">
+                        <h1 style="margin-top:150px" data-aos="fade-up">Türkiye'nin En Kapsamlı Yurt Bulma Platformu</h1>
+                        <p style="margin-top:20px;margin-bottom:70px" data-aos="fade-up" data-aos-delay="100">İdeal yurdunuzu ziyaret etmeden bulun.</p>
+                    </div>
+                </div>
+                <div class="form-search-wrap" data-aos="fade-up" data-aos-delay="200">
+                    <form action="/Liste/AramaSonucu/" method="post">
+                        <div class="row align-items-center">
+                            <div class="col-lg-12 mb-4 mb-xl-0 col-xl-3">
+                                <div class="wrap-icon">
+                                    <span class="icon icon-room"></span>
+                                    <select class="form-control rounded" name="SehirAdi">
+                                        <option>Sehir Seciniz</option>
+                                        @foreach (Sehirler item in ViewBag.Sehirler)
+                                        {
+                                            <option>@item.SehirAdi</option>
+                                        }
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mb-4 mb-xl-0 col-xl-4">
+                                <select class="form-control rounded" name="UniversiteAdi">
+                                    <option>Universite Seciniz</option>
+                                    @foreach (Universiteler item in ViewBag.Universiteler)
+                                    {
+                                        <option>@item.UniversiteAdi</option>
+                                    }
+
+                                </select>
+                            </div>
+                            <div class="col-lg-12 mb-4 mb-xl-0 col-xl-3">
+                                <select class="form-control rounded" name="yurttipi">
+                                    <option>Yurt Tipi</option>
+                                    <option>Erkek</option>
+                                    <option>Kız</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-12 col-xl-2 ml-auto text-right">
+                                <input type="submit" class="btn btn-primary btn-block rounded" value="Ara" style="color:white">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (TempData["mesaj"] != null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@TempData["mesaj"]");
+            };
+    </script>
+}
+else if (TempData["Hata"]!=null)
+{
+    <script type="text/javascript">
+            window.onload = function () {
+                alert("@TempData["Hata"]");
+            };
+    </script>
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6ecffea0447d455b85e475cdc1ec376d" Name="Diagram1">
+        <EntityTypeShape EntityType="YurdumNETModel.Degerlendirmeler" Width="1.5" PointX="8.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="YurdumNETModel.Iletisim" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YurdumNETModel.Sehirler" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YurdumNETModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YurdumNETModel.Universiteler" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="YurdumNETModel.YurtEkle" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="YurdumNETModel.YurtFotograflari" Width="1.5" PointX="8.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="YurdumNETModel.Yurtlar" Width="1.5" PointX="6" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="YurdumNETModel.YurtOzellikleri" Width="1.5" PointX="8.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="YurdumNETModel.YurtSahipleri" Width="1.5" PointX="3.75" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="YurdumNETModel.FK_Degerlendirmeler_Yurtlar" ManuallyRouted="false" />
+        <AssociationConnector Association="YurdumNETModel.FK_Universiteler_Sehirler1" ManuallyRouted="false" />
+        <AssociationConnector Association="YurdumNETModel.FK_Yurtlar_Sehirler1" ManuallyRouted="false" />
+        <AssociationConnector Association="YurdumNETModel.FK_YurtFotograflari_Yurtlar" ManuallyRouted="false" />
+        <AssociationConnector Association="YurdumNETModel.FK_Yurtlar_YurtSahipleri" ManuallyRouted="false" />
+        <AssociationConnector Association="YurdumNETModel.FK_YurtOzellikleri_Yurtlar" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

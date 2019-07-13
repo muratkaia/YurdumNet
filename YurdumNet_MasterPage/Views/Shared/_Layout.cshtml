@@ -1,0 +1,177 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+
+        .scrollup {
+            width: 30px;
+            height: 30px;
+            position: fixed;
+            bottom: 50px;
+            right: 100px;
+            display: none;
+            text-indent: -9999px;
+            background-image: url('/Content/icon/yukarı.jpg');
+            background-color: black;
+        }
+
+        .site-logo {
+            position: relative;
+            left: 0;
+            top: -5px;
+            text-transform: capitalize;
+        }
+
+            .site-logo a {
+                font-size: 20px;
+                font-weight: 900;
+            }
+    </style>
+    <title>YurdumNET &mdash; Kalacağın yeri şansa bırakma</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="/Content/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/Content/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Content/css/magnific-popup.css">
+    <link rel="stylesheet" href="/Content/css/jquery-ui.css">
+    <link rel="stylesheet" href="/Content/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/Content/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/Content/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/Content/fonts/flaticon/font/flaticon.css">
+    <link rel="stylesheet" href="/Content/css/aos.css">
+    <link rel="stylesheet" href="/Content/css/rangeslider.css">
+    <link rel="stylesheet" href="/Content/css/style.css">
+    <link rel="stylesheet" href="~/Content/css/ozellik.css">
+    <link href="/Content/css/ozellikler.css" rel="stylesheet" />
+    @RenderSection("Head", false)
+</head>
+<body>
+    <div class="site-wrap">
+        <div class="site-mobile-menu">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div>
+        <header class="site-navbar container py-0 bg-white" role="banner">
+            <!-- <div class="container"> -->
+            <div class="row align-items-center">
+                <div class="col-6 col-xl-2">
+                    <h1 class="mb-0 site-logo"><a href="/Home/Index" class="text-black mb-3">Yurdum<span class="text-primary">Net</span>  </a></h1>
+                </div>
+                <div class="col-12 col-md-10 d-none d-xl-block">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+                        <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+                            <li><a href="/Home/Index">Anasayfa</a></li>
+                            <li><a href="/Home/Hakkimizda">Hakkımızda</a></li>
+                            <li><a href="/Home/Iletisim">Iletisim</a></li>
+                            <li><a href="/Yurt/Add" class="cta"><span class="bg-primary text-white rounded" style="background-color:#188283">+ Yurt Ekle</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="d-inline-block d-xl-none ml-auto py-3 col-6 text-right" style="position: relative; top: 3px;">
+                    <a href="/Content/#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a>
+                </div>
+            </div>
+            <!-- </div> -->
+        </header>
+        @RenderBody()
+        <footer class="site-footer"style="width:100%">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h2 class="footer-heading mb-4">Kısaca Yurdum.NET</h2>
+                                <p>Üniversitenize yakın yurtların konumu, özelliklerini görebileceğiniz, yurtlarda kalan öğrencilerin yapmış olduğu yorumları ve değerlendirmeleri görerek en ideal yurdunuzu bulabileceğiniz, Türkiye'nin en iyi yurt bulma sitesi.</p>
+                            </div>
+                            <div class="col-md-5">
+                                <h2 class="footer-heading mb-4">İletişim Bilgileri</h2>
+                                <ul class="list-unstyled">
+                                    <li><p><span class="icon-location-arrow"></span> Adres: Cihannüma Mahallesi, Serence Bey, Beşiktaş-Kağıthane Tüneli No:2, 34353 Beşiktaş/İstanbul</p></li>
+                                    <li><p><span class="icon-mail_outline"></span> Mail: info@yurdum.net</p></li>
+                                    <li><p><span class="icon-phone"></span> Telefon: +90 530 550 50 50</p></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <h2 class="footer-heading mb-4">Bizi Takip Edin</h2>
+                                <a href="https://tr-tr.facebook.com/BAU.WissenAkademie/" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+                                <a href="https://twitter.com/Sinemepoglo" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                                <a href="https://www.instagram.com/murratkayya/" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+                                <a href="https://www.linkedin.com/in/serdar-elibol-10a45b179/" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-2 mt-5 text-center" style="height:5px">
+                    <div class="col-md-12">
+                        <div class="border-top pt-3">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script>document.write(new Date().getFullYear());</script> Tüm Hakları Saklıdır | Bu Sayfa Project Team Tarafından Yapılmıştır <i class="icon-heart" aria-hidden="true"></i>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <article>
+                <a href="#" class="scrollup"><img src="/Content/icon/yukarı.jpg" alt="Alternate Text" /></a>
+            </article>
+        </footer>
+    </div>
+    <script src="/Content/js/jquery-3.3.1.min.js"></script>
+    <script src="/Content/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="/Content/js/jquery-ui.js"></script>
+    <script src="/Content/js/popper.min.js"></script>
+    <script src="/Content/js/bootstrap.min.js"></script>
+    <script src="/Content/js/owl.carousel.min.js"></script>
+    <script src="/Content/js/jquery.stellar.min.js"></script>
+    <script src="/Content/js/jquery.countdown.min.js"></script>
+    <script src="/Content/js/jquery.magnific-popup.min.js"></script>
+    <script src="/Content/js/bootstrap-datepicker.min.js"></script>
+    <script src="/Content/js/aos.js"></script>
+    <script src="/Content/js/rangeslider.min.js"></script>
+    <script src="/Content/js/main.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $(window).scroll(function () {
+
+                if ($(this).scrollTop() > 100) {
+
+                    $('.scrollup').fadeIn();
+
+                } else {
+
+                    $('.scrollup').fadeOut();
+
+                }
+            });
+
+            $('.scrollup').click(function () {
+
+                $("html, body").animate({
+
+                    scrollTop: 0
+
+                }, 600);
+
+                return false;
+
+            });
+
+        });
+    </script>
+    @*<script type="text/javascript" src="http://webkodu.ozgurlukicin.com/kod-kaynak/yukari-cik/wk-yukari-cik-75.js">
+        <img src="~/Content/icon/iconfinder_up_292487.png" /></script>*@
+    @RenderSection("Scripts", false)
+</body>
+</html>

@@ -1,0 +1,127 @@
+﻿@{
+    ViewBag.Title = "Arama Sonucu";
+}
+@section head{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>LERAMIZ - Landing Page Template</title>
+    <meta charset="UTF-8">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="shortcut icon" />
+
+    <link rel="stylesheet" href="/Content/leramiz/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/Content/leramiz/css/animate.css" />
+    <link rel="stylesheet" href="/Content/leramiz/css/owl.carousel.css" />
+    <link rel="stylesheet" href="/Content/leramiz/css/style.css" />
+    <link rel="stylesheet" href="/Content/fonts/flaticon/font/flaticon.css">
+
+
+}
+@using YurdumNet_MasterPage.Models
+@model List<Yurtlar>
+@{
+
+    List<string> yollar = new List<string>();
+    foreach (Yurtlar item in Model)
+    {
+        yollar.Add(item.FotografYolu);
+
+    }
+    List<decimal> degerlendirmeler = new List<decimal>();
+
+    foreach (Degerlendirmeler item in ViewBag.Degerlendirme)
+    {
+
+        degerlendirmeler.Add(item.Rating);
+    }
+
+    List<int> puan = new List<int>();
+}
+<div style="height:150px;width:100%;background-color:#E5E9ED"></div>
+<div style="background-color:#E5E9ED">
+    <section class="page-section categories-page">
+        <div class="container">
+            <div class="row">
+                <div class="my-rating"></div>
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-md-6">
+                        <!-- feature -->
+                        <div class="feature-item"  style="background-color:white">
+
+
+                            <div style="border-radius:10px" class="feature-pic set-bg" data-setbg=@item.FotografYolu.Substring(1)>
+
+                                @{
+                                    puan.Clear();
+                                    foreach (Degerlendirmeler item2 in item.Degerlendirmeler)
+                                    {
+                                        puan.Add(item2.Rating);
+                                    }
+
+                                }
+                                <div style="border-radius:10px" class="sale-notic">@(Decimal.Round((decimal)puan.Average(), 1)) </div>
+                            </div>
+                            <div class="feature-text">
+                                <div class="text-center feature-title">
+                                    <h5>@item.YurtAdi</h5>
+                                    <p><i class="fa fa-map-marker"></i> @item.Sehirler.SehirAdi</p>
+                                </div>
+
+
+                                <div class="room-info-warp">
+                                    <div class="room-info">
+                                        <div class="rf-left">
+                                            <p><i class="fa fa-coffee"></i>Kantin:  @item.YurtOzellikleri.Kantin</p>
+                                            <p><i class="fa fa-ambulance"></i>Revir: @item.YurtOzellikleri.Revir</p>
+                                        </div>
+                                        <div class="rf-right">
+                                            <p><i class="fa fa-id-card"></i>Kartlı Giriş: @item.YurtOzellikleri.Kartli_Giris</p>
+                                            <p><i class="fa fa-wifi"></i>Wi-Fi: @item.YurtOzellikleri.wi_fi</p>
+                                        </div>
+                                    </div>
+                                    <div class="room-info">
+                                        <div class="rf-left">
+                                            <p><i class="fa fa-user"></i> @item.YurtSahipleri.SahipAdiSoyadi</p>
+                                        </div>
+                                        <div class="rf-right">
+                                            <p>Yıllık Ücret: &nbsp;&nbsp;<i class="fa fa-turkish-lira"></i><b>@(10 * (int)item.AylikFiyat)</b></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <a href="/Liste/Detay/@item.YurtID" style="border-radius:10px" class="room-price">Detaylı Görüntüle</a>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                }
+
+
+            </div>
+
+            <div class="site-pagination">
+                <span>1</span>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#"><i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+</div>
+@section Scripts{
+    <script src="/Content/leramiz/js/jquery-3.2.1.min.js"></script>
+    <script src="/Content/leramiz/js/bootstrap.min.js"></script>
+    <script src="/Content/leramiz/js/owl.carousel.min.js"></script>
+    <script src="/Content/leramiz/js/masonry.pkgd.min.js"></script>
+    <script src="/Content/leramiz/js/magnific-popup.min.js"></script>
+    <script src="/Content/leramiz/js/main.js"></script>
+    <script src="/Content/js/JavaScript.js"></script>
+    <script src="~/Content/"></script>
+}

@@ -1,0 +1,486 @@
+﻿@using YurdumNet_MasterPage.Models
+@{
+    ViewBag.Title = "Detay";
+}
+@model Yurtlar
+@section head{
+
+    <link rel="stylesheet" type="text/css" href="/Content/yorumekle/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/yorumekle/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+
+    <link href="~/Content/css/RatingAdd.css" rel="stylesheet" />
+
+    <link href="/Content/css/ozellik1.css" rel="stylesheet" />
+    <link href="~/Content/css/Rating.css" rel="stylesheet" />
+
+    <style>
+        .yazitipi {
+            font-family: Poppins-Regular;
+        }
+        .listing_features ul li:nth-child(odd) {
+            background: #e5e9ed;
+        }
+    </style>
+
+}
+
+
+
+<div style="margin-top:150px">
+    <div style="width:100%">
+        <div class="col-lg-7" style="float:left">
+
+            <div class="mb-4">
+                <div class="slide-one-item home-slider owl-carousel" style="border-radius:10px">
+                    @foreach (YurtFotograflari item in Model.YurtFotograflari)
+                    {
+                        <div style="height:450px"><img src="@item.FotoYolu.Substring(1)" alt="Image" class="img-fluid"></div>
+                    }
+
+
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-5" style="height:560px;float:left">
+            @*<div style="margin-top:30px">
+                    <h5 style="text-align:center"><b>@Model.YurtAdi</b></h5>
+                </div>*@
+
+
+
+            @{
+                List<int> puan = new List<int>();
+                int k = 0;
+
+                foreach (Degerlendirmeler item in Model.Degerlendirmeler)
+                {
+                    puan.Add(item.Rating);
+                    k++;
+                }
+
+                decimal i = (Decimal.Round((decimal)puan.Average(), 1)) * 20;
+                i = (int)i;
+
+                <div class="sidebar_info" style="margin-top:20px;margin-bottom:40px">
+
+                    <h5 class="yazitipi" style="text-align:center;margin-bottom:30px"><b>@Model.YurtAdi</b></h5>
+
+
+                    <div style="float:left;margin-left:37%" class="star-ratings-sprite"><span style="width:@i%" class="star-ratings-sprite-rating"></span></div>
+                    <div style="float:left">&nbsp;&nbsp;(@k)</div>
+
+                </div>
+            }
+
+
+            <div class="sidebar_info" style="margin-top:70px">
+                <ul>
+                    <li class="d-flex flex-row align-items-start justify-content-start">
+                        <div class="sidebar_info_icon"><img src="/Content/icon/info_1.png" alt=""></div>
+                        <div class="sidebar_info_content"><span>Address: </span>@Model.Adres</div>
+                    </li>
+                    <li class="d-flex flex-row align-items-start justify-content-start">
+                        <div class="sidebar_info_icon"><img src="~/Content/icon/info_2.png" alt=""></div>
+                        <div class="sidebar_info_content"><span>Phone: </span>@Model.Telefon</div>
+                    </li>
+                    <li class="d-flex flex-row align-items-start justify-content-start">
+                        <div class="sidebar_info_icon"><img src="~/Content/icon/info_3.png" alt=""></div>
+                        <div class="sidebar_info_content"><span>E-mail: </span>@Model.YurtSahipleri.SahipMail</div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="container col-lg-12" style="width:100%">
+        <div class="row col-12">
+            <div class="col-xs-12 col-lg-12">
+                <nav>
+                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Özellikler</a>
+                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Konum</a>
+                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Yorumlar</a>
+                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-yorumekle" role="tab" aria-controls="nav-contact" aria-selected="false">Yorum Ekle</a>
+
+                    </div>
+                </nav>
+                <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+
+                    @*--------------------------------------------------------------------------------------------------------------------------------------------*@
+
+
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div class="col-lg-12">
+                            <div class="listing_features" style="margin-top:0px;margin-bottom:30px">
+                                <div class="row" style="text-align:left">
+                                    @foreach (YurtOzellikleri item in ViewBag.ozellikler)
+                                    {
+                                        <div class="col-lg-3">
+                                            <ul>
+                                                <li>
+                                                    @if (@item.Aksam_Yemegi == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Akşam Yemeği
+                                                </li>
+                                                <li>
+                                                    @if (@item.Kahvalti == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Kahvaltı
+                                                </li>
+                                                <li>
+                                                    @if (@item.Mini_Buzdolabi == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Mini Buzdolabı
+                                                </li>
+                                                <li>
+                                                    @if (@item.Kantin == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Kantin
+                                                </li>
+                                                <li>
+                                                    @if (@item.Bilgisayar_Odasi == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Bilgisayar Odası
+                                                </li>
+                                                <li>
+                                                    @if (@item.Bir_Kisilik == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Bir Kişilik Oda
+                                                </li>
+                                                <li>
+                                                    @if (@item.Iki_Kisilik == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} İki Kişilik Oda
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <ul>
+                                                <li>
+                                                    @if (@item.Uc_Kisilik == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Üç Kişilik Oda
+                                                </li>
+                                                <li>
+                                                    @if (@item.Dort_Kisilik == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Dört Kişilik Oda
+                                                </li>
+                                                <li>
+                                                    @if (@item.Camasir_Odasi == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Çamaşır Odası
+                                                </li>
+                                                <li>
+                                                    @if (@item.Utu_Odasi == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Ütü Odası
+                                                </li>
+                                                <li>
+                                                    @if (@item.Tv_Odasi == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Tv Odası
+                                                </li>
+                                                <li>
+                                                    @if (@item.Jenerator == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Jenerator
+                                                </li>
+                                                <li>
+                                                    @if (@item.Klima == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Klima
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <ul>
+                                                <li>
+                                                    @if (@item.Kartli_Giris == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Kartlı Giriş
+                                                </li>
+                                                <li>
+                                                    @if (@item.Kamera_Kayit == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Kamera Kayıt
+                                                </li>
+                                                <li>
+                                                    @if (@item.Siginak == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Sığınak
+                                                </li>
+                                                <li>
+                                                    @if (@item.Kitaplik == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Kitaplık
+                                                </li>
+                                                <li>
+                                                    @if (@item.wi_fi == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Wi-Fi
+                                                </li>
+                                                <li>
+                                                    @if (@item.Yangin_Merdiveni == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Yangın Merdiveni
+                                                </li>
+                                                <li>
+                                                    @if (@item.Merkezi_Isitma == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Merkezi Isıtma
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <ul>
+                                                <li>
+                                                    @if (@item.Asansor == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Asansör
+                                                </li>
+                                                <li>
+                                                    @if (@item.Bahce == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Bahçe
+                                                </li>
+                                                <li>
+                                                    @if (@item.Bilardo == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Bilardo
+                                                </li>
+                                                <li>
+                                                    @if (@item.Fitness_Salonu == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Fitness Salonu
+                                                </li>
+                                                <li>
+                                                    @if (@item.Havuz == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Havuz
+                                                </li>
+                                                <li>
+                                                    @if (@item.Masa_Tenisi == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Masa Tenisi
+                                                </li>
+                                                <li>
+                                                    @if (@item.Satranc == "Var")
+                                                    {<img src="/Content/icon/ok3.png" />}
+                                                    else
+                                                    { <img src="/Content/icon/no1.png" />} Satranç
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @*--------------------------------------------------------------------------------------------------------------------------------------------*@
+
+
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <div class="mapouter">
+
+                            <div style="margin-left:9%" class="gmap_canvas"><iframe width="1080" height="530" id="gmap_canvas" src="@Model.Konum" frameborder="0" scrolling="no"></iframe>@*<a href="https://www.bitgeeks.net/embed-google-map/">embed multiple location google map in html</a>*@</div>
+
+                        </div>
+
+                    </div>
+
+
+                    @*--------------------------------------------------------------------------------------------------------------------------------------------*@
+
+
+                    <div class="tab-pane fade col-lg-12" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <div class="site-section bg-white">
+                            <div class="container">
+
+                                <div class="slide-one-item home-slider owl-carousel">
+
+                                    @foreach (Degerlendirmeler item in Model.Degerlendirmeler)
+                                    {
+                                        <div>
+
+                                            <div class="testimonial">
+                                                <figure class="mb-4">
+
+                                                    <h4 class="yazitipi">@item.Adi&nbsp;@item.Soyadi</h4>
+                                                    @{int m = item.Rating * 20;}
+                                                    <div class="star-ratings-sprite"><span style="width:@m%" class="star-ratings-sprite-rating"></span></div>
+                                                    <br />
+                                                    <br />
+
+                                                </figure>
+                                                <blockquote>
+                                                    <p class="yazitipi">&ldquo;@item.Yorum&rdquo;</p>
+                                                </blockquote>
+                                                <br />
+                                                <br />
+                                                <h5>@String.Format("{0:M MMMM yyyy}", item.Tarih)</h5>
+                                            </div>
+                                        </div>
+                                    }
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    @*--------------------------------------------------------------------------------------------------------------------------------------------*@
+
+
+                    <div class="tab-pane fade col-lg-12" id="nav-yorumekle" role="tabpanel" aria-labelledby="nav-contact-tab">
+                        <div class="container-contact100" style="background-color:gray">
+
+                            <div class="wrap-contact100" style="width:100%">
+                                <div class="contact100-form-title" style="background-image: url(/Content/yorumekle/bg-01.jpg);">
+                                    <span class="contact100-form-title-1">
+                                        Deneyimlerinizi Paylaşın
+                                    </span>
+
+                                    <span class="contact100-form-title-2">
+                                        Kaldığınız yurttaki tecrübelerinizi paylaşarak yeni öğrencilere fikir sağlayabilirsiniz!
+                                    </span>
+                                </div>
+
+                                <form class="contact100-form validate-form" action="/Liste/Gonder" method="post">
+                                    <div class="wrap-input100 validate-input" data-validate="İsim gerekli">
+                                        <span class="label-input100">Ad:</span>
+                                        <input class="input100" type="text" name="name" placeholder="Adınızı giriniz">
+                                        <span class="focus-input100"></span>
+                                    </div>
+
+
+                                    <div class="wrap-input100 validate-input" data-validate="Soyisim gerekli">
+                                        <span class="label-input100">Soyad:</span>
+                                        <input class="input100" type="text" name="surname" placeholder="Soyadınızı giriniz">
+                                        <span class="focus-input100"></span>
+                                    </div>
+
+
+
+                                    <div class="wrap-input100 validate-input" data-validate="Geçerli bir e-posta gerekli: ex@abc.xyz">
+                                        <span class="label-input100">E-mail:</span>
+                                        <input class="input100" type="text" name="email" placeholder="E-mail adresinizi giriniz">
+                                        <span class="focus-input100"></span>
+                                    </div>
+
+
+
+                                    <input type="hidden" name="yurtid" value="@Model.YurtID" />
+
+
+
+
+                                    <div class="wrap-input100">
+                                        <span class="label-input100">Yurt:</span>
+                                        <label style="padding-top:13px;padding-bottom:6px;text-align:left" class="input100">@Model.YurtAdi</label>
+                                        <span class="focus-input100"></span>
+                                    </div>
+
+
+                                    <div class="wrap-input100 validate-input" data-validate="Degerlenirme gerekli">
+                                        <span class="label-input100">Degerlendirme:</span>
+
+
+
+
+
+
+
+
+
+
+
+                                        <fieldset class="rating">
+                                            <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Muhteşem - 5 Yıldız"></label>
+
+
+                                            <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4" title="İyi - 4 Yıldız"></label>
+
+
+                                            <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Yeterli - 3 Yıldız"></label>
+
+
+                                            <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Kötü - 2 Yıldız"></label>
+
+
+                                            <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Berbat - 1 Yıldız"></label>
+
+                                        </fieldset>
+                                        <span class="focus-input100"></span>
+                                    </div>
+
+
+
+
+                                    <div class="wrap-input100 validate-input" data-validate="Yorum gerekli">
+                                        <span class="label-input100">Yorum:</span>
+                                        <textarea class="input100" name="message" placeholder="Yorumunuz..."></textarea>
+                                        <span class="focus-input100"></span>
+                                    </div>
+
+                                    <div class="container-contact100-form-btn">
+                                        <button class="contact100-form-btn">
+                                            <span>
+                                                Gönder
+                                                <i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="/Content/js/jquery-3.3.1.min.js"></script>
+    <script src="/Content/js/bootstrap.min.js"></script>
+    <script src="/Content/yorumekle/js/main.js"></script>
+}

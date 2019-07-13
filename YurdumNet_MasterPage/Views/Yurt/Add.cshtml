@@ -1,0 +1,160 @@
+﻿@model YurdumNet_MasterPage.Models.YurtEkle
+
+
+
+@{
+    ViewBag.Title = "Add";
+}
+@section head{
+    <link href="/Content/css/yurtekle.css" rel="stylesheet" />
+    <style>
+        body {
+            background: url('../images/1.png') no-repeat 0px 0px;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+    </style>
+}
+
+@using (Html.BeginForm("Add", "Yurt", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div style="margin-top:150px">
+        @Html.AntiForgeryToken()
+
+        <div class="container" style="width:100%">
+            <h1>Yurt Ekle</h1>
+            <div class="left-w3" style="margin-left:25%">
+                <h2>Sitemizde bulunmasını istediğiniz yurdu ekleyin!</h2>
+
+
+
+
+
+                <form action="#" method="post">
+
+
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+
+
+
+
+
+
+                    <div class="agile1">
+
+                        <h3>Ad</h3>
+
+                        @Html.EditorFor(model => model.Adı, new { htmlAttributes = new { @class = "name" } })
+
+
+                        @Html.ValidationMessageFor(model => model.Adı, "", new { @class = "text-danger" })
+                    </div>
+
+
+
+
+
+
+                    <div class="agile1">
+                        <h3>Soyad</h3>
+                        @Html.EditorFor(model => model.Soyadi, new { htmlAttributes = new { @class = "name" } })
+
+
+                        @Html.ValidationMessageFor(model => model.Soyadi, "", new { @class = "text-danger" })
+                    </div>
+
+
+
+
+                    <div class="agile1">
+                        <h3>Telefon</h3>
+                        @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "name" } })
+
+
+                        @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
+                    </div>
+
+
+
+
+                    <div class="agile1">
+                        <h3>Yurt Adi</h3>
+                        @Html.EditorFor(model => model.YurtAdi, new { htmlAttributes = new { @class = "name" } })
+
+
+                        @Html.ValidationMessageFor(model => model.YurtAdi, "", new { @class = "text-danger" })
+                    </div>
+
+
+
+                    <div class="agile1">
+                        <h3>Adres</h3>
+                        @Html.EditorFor(model => model.Adres, new { htmlAttributes = new { @class = "textarea" } })
+
+
+                        @Html.ValidationMessageFor(model => model.Adres, "", new { @class = "text-danger" })
+                    </div>
+
+
+
+
+
+                    <div class="agile1">
+                        <h3>Fotoğraf</h3>
+
+                        <input type="file" name="FotoDosyasi" required />
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <input style="border-radius:10px;margin-bottom:30px" type="submit" value="Kaydet" onclick="return confirm('Formunuz gönderiliyor, onaylıyor musnuz?')">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </form>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+
+}
+
+
+
+
+
+
+
